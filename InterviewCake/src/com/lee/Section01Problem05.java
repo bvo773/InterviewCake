@@ -61,20 +61,4 @@ half2        = { 15, 37, 51, 11 }
 shuffledDeck = { 10, 15, 24, 37, 36, 51, 7, 11 } // true
 half1        = { 10, 24, 36, 7 }
 shuffledDeck = { 10, 15, 51, 7, 24, 11, 37, 36 } // false
-
-i = 0
-        half1[0] = 10
-        half2[0] = 15
-        shuffledDeck[0] = 10
-        shuffledDeck[1] = 15
-
-        i = 2
-        half1[2] = 10
-        half2[2] = 15
-        shuffledDeck[2] = 10
-        shuffledDeck[3] = 15
-
-
-
-
  */
