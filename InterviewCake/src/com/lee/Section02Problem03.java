@@ -1,6 +1,9 @@
 package com.lee;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Iterator;
 
 public class Section02Problem03 {
     HashMap<String, Integer> BuildWordCloud_buildOnString(String input) {
@@ -12,7 +15,7 @@ public class Section02Problem03 {
             if (!Character.isLetter(ch)) {
                 if (word == "") {
                 continue;
-            }
+                }
                 int cnt = 0;
                 if (wordCloud.containsKey(word)) {
                     cnt = wordCloud.get(word);
@@ -41,6 +44,49 @@ public class Section02Problem03 {
     }
 
     HashMap<String, Integer> BuildWordCloud_buildUsingIndex(String input) {
+        HashMap<String, Integer> wordCloud = new HashMap<>();
+        int currentWordStartIndex = 0;
+        int currentWordLength = 0;
+        for (char ch : input.toCharArray()) {
+            if (!Character.isLetter(ch)) {
+                if (currentWordLength == currentWordStartIndex) { // if we see a ' ' | ',' again it means they're both at the same positions, we just continue...
+                    currentWordLength++;
+                    currentWordStartIndex = currentWordLength;
+                    continue;
+                }
+                hashWordIntoMap(input, wordCloud, currentWordStartIndex, currentWordLength);
+                currentWordLength += 1; // reset new index position and length for new word
+                currentWordStartIndex = currentWordLength;
+                continue;
+            }
+            currentWordLength++;
+        }
+
+        if (currentWordStartIndex != currentWordLength ) {
+            hashWordIntoMap(input, wordCloud, currentWordStartIndex, currentWordLength);
+        }
+        return wordCloud;
+    }
+
+    public void hashWordIntoMap(String input, HashMap wordCloud, int currentWordStartIndex, int currentWordLength) {
+        int cnt = 0;
+        if (wordCloud.containsKey(input.substring(currentWordStartIndex, currentWordLength))) {
+            cnt = (int) wordCloud.get(input.substring(currentWordStartIndex, currentWordLength));
+        }
+        cnt++;
+        wordCloud.put(input.substring(currentWordStartIndex, currentWordLength).toLowerCase(), cnt);
+
+    }
+
+
+    public void displayHash(Map map) {
+        Set<String> key = map.keySet();
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
+        }
 
     }
 }
