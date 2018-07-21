@@ -1,6 +1,6 @@
-package com.lee;
+package com.lee.section01;
 
-public class Section01Problem02 {
+public class Problem02 {
     public static void reverse(char[] arrayOfChars) {
 
         int leftIndex = 0;

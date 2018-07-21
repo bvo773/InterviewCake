@@ -1,8 +1,8 @@
-package com.lee;
+package com.lee.section02;
 
 import java.util.HashSet;
 
-public class Section02Problem01 {
+public class Problem01 {
     boolean TwoMoviesEqualFlightLength(int flightLength, int[] movieLengths) {
         HashSet<Integer> complementSet = new HashSet<Integer>();
 

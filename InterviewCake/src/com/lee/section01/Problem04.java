@@ -1,8 +1,8 @@
-package com.lee;
+package com.lee.section01;
 
 import static java.lang.Integer.MAX_VALUE;
 
-public class Section01Problem04 {
+public class Problem04 {
     int[] mergeArrays(int[] arrayA, int[] arrayB)
     {
         int[] result = new int[arrayA.length + arrayB.length];

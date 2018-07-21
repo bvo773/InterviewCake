@@ -1,8 +1,8 @@
-package com.lee;
+package com.lee.section02;
 
 import java.util.HashMap;
 
-public class Section02Problem04 {
+public class Problem04 {
     int[] sortScores(int[] unsortedScores, int highestPossibleScore) {
         HashMap<Integer, Integer> scoreCountMap = new HashMap<>();
 

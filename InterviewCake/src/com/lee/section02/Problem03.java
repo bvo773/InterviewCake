@@ -1,12 +1,12 @@
-package com.lee;
+package com.lee.section02;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Iterator;
 
-public class Section02Problem03 {
-    HashMap<String, Integer> BuildWordCloud_buildOnString(String input) {
+public class Problem03 {
+    public HashMap<String, Integer> BuildWordCloud_buildOnString(String input) {
         HashMap<String, Integer> wordCloud = new HashMap<>();
         String word = "";
         for (char ch : input.toCharArray())
@@ -43,7 +43,7 @@ public class Section02Problem03 {
         return wordCloud;
     }
 
-    HashMap<String, Integer> BuildWordCloud_buildUsingIndex(String input) {
+    public HashMap<String, Integer> BuildWordCloud_buildUsingIndex(String input) {
         HashMap<String, Integer> wordCloud = new HashMap<>();
         int currentWordStartIndex = 0;
         int currentWordLength = 0;

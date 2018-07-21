@@ -1,6 +1,6 @@
-package com.lee;
+package com.lee.section01;
 
-public class Section01Problem03 {
+public class Problem03 {
     public static void reverseWords(char[] message) {
 
         // first we reverse all the characters in the entire message array

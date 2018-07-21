@@ -1,11 +1,11 @@
-package com.lee;
+package com.lee.section02;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Section02Problem02 {
+public class Problem02 {
     boolean IsAPalindrome_SetSolution(String input) {
         Set<Character> letterSet = new HashSet<>();
 
