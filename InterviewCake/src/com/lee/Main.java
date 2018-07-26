@@ -12,5 +12,6 @@ public class Main {
 
         int r3 = com.lee.section03.Problem02.FindHighestProducOfThreeIntegers( new int[] { -10, 5, 3, -6, 2 } );
         System.out.println(r3);
+
     }
 }

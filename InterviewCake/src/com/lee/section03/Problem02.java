@@ -2,35 +2,35 @@ package com.lee.section03;
 
 public class Problem02 {
     public static int FindHighestProducOfThreeIntegers(int[] arrayOfInts) {
-        int minFactor1 = arrayOfInts[0];
-        int minFactor2 = arrayOfInts[1];
-
-        int maxFactor1 = arrayOfInts[0];
-        int maxFactor2 = arrayOfInts[1];
+        int minFactor = Math.min(arrayOfInts[0], arrayOfInts[1]);
+        int maxFactor = Math.max(arrayOfInts[0], arrayOfInts[1]);
 
         int minProductOfTwoFactors = arrayOfInts[0] * arrayOfInts[1];
         int maxProductOfTwoFactors = arrayOfInts[0] * arrayOfInts[1];
 
-        int maxProduct = maxProductOfTwoFactors * arrayOfInts[2];
+        int maxProduct = arrayOfInts[0] * arrayOfInts[1] * arrayOfInts[2];
 
-        // [ −10, 5, 3, -6, 2 ]
+        // [ −10, 5, 3, -6, 2 ] x * y * z
 
         for (int i = 2; i < arrayOfInts.length; i++) {
             int factor = arrayOfInts[i];
             int prod1 = factor * minProductOfTwoFactors;
             int prod2 = factor * maxProductOfTwoFactors;
-            int prod = Math.max(prod1, prod2);
-            maxProduct = Math.max(prod, maxProduct);
+            maxProduct = Math.max(
+                    Math.max(prod1, prod2),
+                    maxProduct);
 
-            int[] newMaxFactors = GetTopTwoMax(factor, maxFactor1, maxFactor2);
-            maxFactor1 = newMaxFactors[0];
-            maxFactor2 = newMaxFactors[1];
-            maxProductOfTwoFactors = maxFactor1 * maxFactor2;
+            maxProductOfTwoFactors = Math.max(
+                    Math.max(factor*maxFactor, factor*minFactor),
+                    maxProductOfTwoFactors
+            );
+            minProductOfTwoFactors = Math.min(
+                    Math.min(factor*minFactor, factor*maxFactor),
+                    minProductOfTwoFactors
+            );
 
-            int[] newMinFactors = GetTopTwoMin(factor, minFactor1, minFactor2);
-            minFactor1 = newMinFactors[0];
-            minFactor2 = newMinFactors[1];
-            minProductOfTwoFactors = minFactor1 * minFactor2;
+            maxFactor = Math.max(maxFactor, factor);
+            minFactor = Math.min(minFactor, factor);
         }
 
         return maxProduct;
@@ -43,44 +43,4 @@ public class Problem02 {
 
 // [ −10, 5, 3, -6, 2 ]
 
-
-    static int[] GetTopTwoMax(int x, int y, int z) {
-        // x=7 y=5 z=1
-        int firstMax;
-        int secondMax;
-        if (x > y) {
-            firstMax = x;
-            secondMax = y;
-        }
-        else {
-            firstMax = y;
-            secondMax = x;
-        }
-
-        if (z > secondMax) {
-            secondMax = z;
-        }
-
-        return new int[] {firstMax, secondMax};
-    }
-
-    static int[] GetTopTwoMin(int x, int y, int z) {
-        // x=7 y=5 z=1
-        int firstMin;
-        int secondMin;
-        if (x < y) {
-            firstMin = x;
-            secondMin = y;
-        }
-        else {
-            firstMin = y;
-            secondMin = x;
-        }
-
-        if (z < secondMin) {
-            secondMin = z;
-        }
-
-        return new int[] {firstMin, secondMin};
-    }
 }
