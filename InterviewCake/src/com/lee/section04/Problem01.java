@@ -22,5 +22,5 @@ public class Problem01 {
          }
 
          return floorIndex;
-    }
+    }1
 }
